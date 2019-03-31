@@ -1,0 +1,81 @@
+\documentclass[12pt]{src/thesis} 
+% *****************************************************
+% Generate standard “lorem ipsum” text
+% *****************************************************
+\usepackage{lipsum}
+% *****************************************************
+% Line numbers for  examiner
+% *****************************************************
+%\usepackage{lineno}
+%\linenumbers
+% *****************************************************
+% Bibliography
+% *****************************************************
+\addbibresource{bibliography.bib}
+\addbibresource[label=ownpubs]{publications.bib}
+% *****************************************************
+% Document settings
+% *****************************************************
+\title{TMD's are little shits and are not to be trusted} %your thesis title,
+\author{Cedric Diggory}             %your name
+\degree{Doctor of Philosophy in  Defence Against the Dark Arts}    %the degree
+\supervisor{Prof. Albus Dumbledore}  %Supervisor name
+\college{Department of Mysteries}  %your college
+\university{Trinity College Dublin} %your university
+\degreedate{\today}         %the degree date
+% *****************************************************
+% start the document
+% *****************************************************
+\begin{document}
+%this baselineskip gives sufficient line spacing for an examiner to easily
+%markup the thesis with comments
+\baselineskip=18pt plus1pt
+%set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\maketitle                  % create a title page from the preamble info
+\include{src/declaration}        % include a dedication.tex file
+\include{src/dedication}        % include a dedication.tex file
+\include{src/acknowlegements}   % include an acknowledgements.tex file
+\include{src/publications}		% include an publications.tex file
+\include{src/abstract}          % include the abstract
+\begin{romanpages}          % start roman page numbering
+\thispagestyle{empty}
+\tableofcontents            % generate and include a table of contents
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}\listoffigures              % generate and include a list of figures
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}\listoftables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\include{src/acronyms}
+\newpage
+\end{romanpages}            % end roman page numbering
+%now include the files of latex for each of the chapters etc
+\doublespacing
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/conclusions}
+% now enable appendix numbering format and include any appendices
+% \appendix
+% \include{chapters/appendix1}
+% \include{chapters/appendix2}
+%*******************************************************
+% Bliography
+%*******************************************************
+\printbibheading[heading=bibintoc]
+\printbibliography[heading=subbibliography,type=article,title={Articles}]
+\printbibliography[heading=subbibliography,type=book,title={Monographs \& Textbooks}]
+%*******************************************************
+% Other Stuff in the Back
+%*******************************************************
+\cleardoublepage\include{src/colophon}
+% ******************************************************
+% Game Over: Restore, Restart, or Quit?
+%*******************************************************
+\end{document}
+
